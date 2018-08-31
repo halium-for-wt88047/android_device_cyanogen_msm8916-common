@@ -19,4 +19,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.pcm.16bit.enable=false \
     audio.offload.pcm.24bit.enable=true \
     audio.offload.video=true \
-    use.voice.path.for.pcm.voip=true
+    use.voice.path.for.pcm.voip=true \
+    ro.qc.sensors.wl_dis=true
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/unblock_wakelock.sh:system/etc/unblock_wakelock.sh
