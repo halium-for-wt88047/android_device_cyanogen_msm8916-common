@@ -307,14 +307,6 @@ service dpmd /system/bin/dpmd
     class main
     socket dpmd stream 660 root system
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    seclabel u:r:bluetooth_loader:s0
-    oneshot
-
 on property:bluetooth.hciattach=true
     start hciattach
 
@@ -341,6 +333,7 @@ service qmuxd /system/bin/qmuxd
     user root
     group radio audio bluetooth gps qcom_diag wakelock
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     class core
@@ -503,4 +496,10 @@ service wcnss-service /system/bin/wcnss_service
 
 service qcom-mem /system/bin/sh /system/etc/init.qcom.mem.sh
     disabled
+    oneshot
+
+service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
+    class main
+    user root
+    group root
     oneshot

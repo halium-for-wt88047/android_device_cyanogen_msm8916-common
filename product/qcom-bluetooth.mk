@@ -1,6 +1,6 @@
 # Init
 PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
+    init_wlan_bt.sh
 
 # Permissions
 PRODUCT_COPY_FILES += \
